@@ -21,7 +21,10 @@ public class Overworld : GameState
         playerEntity.Transform.Position =
             new Vector3(GameStateManager.Window.Width / 2, 
                 GameStateManager.Window.Height / 2, 0);
+        var circ = new Entity();
+        circ.AddComponent(new RenderCircle(50));
         
+        AddEntity(circ); 
         AddEntity(playerEntity);
     }
 
