@@ -28,6 +28,9 @@ public class Overworld : GameState
     public override void Update(GameTime gameTime)
     {
         base.Update(gameTime);
-        GameStateManager.Window.CameraPosition = playerEntity.Transform.Position.ToVec2() / 2;
+        var CameraPos = new Vector2(
+            playerEntity.Transform.Position.X - GameStateManager.Window.settings.Width / 2,
+            playerEntity.Transform.Position.Y - GameStateManager.Window.settings.Height / 2);
+        GameStateManager.Window.CameraPosition = CameraPos;
     }
 }
