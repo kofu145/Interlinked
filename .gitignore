@@ -24,8 +24,8 @@
 *.suo
 *.user
 .vs/
-[Bb]in/
-[Oo]bj/
+Interlinked/[Bb]in/
+Interlinked/[Oo]bj/
 _UpgradeReport_Files/
 [Pp]ackages/
 
@@ -35,7 +35,7 @@ Desktop.ini
 *.suo
 *.user
 _ReSharper.*
-bin/
-obj
+Interlinked/bin/
+Interlinked/obj
 *.obj
 packages
