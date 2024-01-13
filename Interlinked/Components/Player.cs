@@ -50,9 +50,9 @@ public class Player : Component
         }
 
         if (direction.X < 0)
-            ParentEntity.Transform.Rotation.Z = 180;
+            ParentEntity.Transform.Scale.X = -PlayerSize;
         else if (direction.X > 0)
-            ParentEntity.Transform.Rotation.Z = 0;
+            ParentEntity.Transform.Scale.X = PlayerSize;
 
         Transform.Position += direction * speed * gameTime.DeltaTime;
     }
