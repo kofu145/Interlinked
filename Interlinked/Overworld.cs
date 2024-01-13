@@ -2,6 +2,7 @@
 using GramEngine.ECS;
 using GramEngine.ECS.Components;
 using Interlinked.Components;
+using Transform = SFML.Graphics.Transform;
 
 namespace Interlinked;
 using GramEngine.Core;
@@ -19,7 +20,7 @@ public class Overworld : GameState
         playerEntity.Transform.Scale = new Vector2(PlayerSize, PlayerSize);
         playerEntity.Transform.Position =
             new Vector3(GameStateManager.Window.Width / 2, 
-                GameStateManager.Window.Height / 2, 1f);
+                GameStateManager.Window.Height / 2, 0);
         
         AddEntity(playerEntity);
     }
@@ -27,5 +28,6 @@ public class Overworld : GameState
     public override void Update(GameTime gameTime)
     {
         base.Update(gameTime);
+        GameStateManager.Window.CameraPosition = playerEntity.Transform.Position.ToVec2() / 2;
     }
 }
