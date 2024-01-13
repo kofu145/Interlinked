@@ -36,6 +36,7 @@ Desktop.ini
 *.user
 _ReSharper.*
 Interlinked/bin/
+bin/
 Interlinked/obj
 *.obj
 packages
