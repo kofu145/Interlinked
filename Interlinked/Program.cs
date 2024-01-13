@@ -1,3 +1,14 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿using GramEngine.Core;
+using Interlinked;
 
-Console.WriteLine("Hello, World!");
+WindowSettings windowSettings = new WindowSettings()
+{
+    NaiveCollision = true,
+    WindowTitle = "Interlinked",
+    Width = 1280,
+    Height = 760
+};
+
+Window window = new Window(new Overworld(), windowSettings);
+
+window.Run();

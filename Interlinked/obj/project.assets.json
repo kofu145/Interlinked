@@ -659,40 +659,32 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\kim92\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\tyler\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\A_CProj\\Interlinked\\Interlinked\\Interlinked.csproj",
+      "projectUniqueName": "C:\\Users\\tyler\\OneDrive\\Documents\\GitHub\\GameDev\\Interlinked\\Interlinked\\Interlinked.csproj",
       "projectName": "Interlinked",
-      "projectPath": "D:\\A_CProj\\Interlinked\\Interlinked\\Interlinked.csproj",
-      "packagesPath": "C:\\Users\\kim92\\.nuget\\packages\\",
-      "outputPath": "D:\\A_CProj\\Interlinked\\Interlinked\\obj\\",
+      "projectPath": "C:\\Users\\tyler\\OneDrive\\Documents\\GitHub\\GameDev\\Interlinked\\Interlinked\\Interlinked.csproj",
+      "packagesPath": "C:\\Users\\tyler\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\tyler\\OneDrive\\Documents\\GitHub\\GameDev\\Interlinked\\Interlinked\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\kim92\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\tyler\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "D:\\A_CProj\\GramEngine\\GramEngine.csproj": {
-              "projectPath": "D:\\A_CProj\\GramEngine\\GramEngine.csproj"
+            "C:\\Users\\tyler\\OneDrive\\Documents\\GitHub\\GameDev\\GramEngine\\GramEngine.csproj": {
+              "projectPath": "C:\\Users\\tyler\\OneDrive\\Documents\\GitHub\\GameDev\\GramEngine\\GramEngine.csproj"
             }
           }
         }
@@ -740,7 +732,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Users\\tyler\\.dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

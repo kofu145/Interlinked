@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Interlinked")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ee79e5dd728863bb03c7493b6564a81f95267cf5")]
 [assembly: System.Reflection.AssemblyProductAttribute("Interlinked")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Interlinked")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
