@@ -35,6 +35,7 @@ Desktop.ini
 *.suo
 *.user
 _ReSharper.*
-bin
+bin/
 obj
+*.obj
 packages
