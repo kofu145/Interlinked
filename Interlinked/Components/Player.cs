@@ -11,7 +11,7 @@ public class Player : Component
     private float speed;
     private Keys[] movementInputs = { Keys.W, Keys.A, Keys.S, Keys.D };
     private Animation anim;
-    public const float PlayerSize = 3f;
+    public const float PlayerSize = 5f;
 
     public Player(float speed)
     {
