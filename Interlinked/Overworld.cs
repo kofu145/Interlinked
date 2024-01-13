@@ -1,5 +1,6 @@
 ﻿using GramEngine.ECS;
 using GramEngine.ECS.Components;
+using Interlinked.Components;
 
 namespace Interlinked;
 using GramEngine.Core;
@@ -12,7 +13,7 @@ public class Overworld : GameState
         base.Initialize();
         playerEntity = new Entity();
         playerEntity.AddComponent(new Sprite("Content/nyplayer.png"));
-        
+        playerEntity.AddComponent(new Player(300f));
         
         AddEntity(playerEntity);
     }
