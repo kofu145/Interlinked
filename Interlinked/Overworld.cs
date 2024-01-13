@@ -21,6 +21,10 @@ public class Overworld : GameState
         playerEntity.Transform.Position =
             new Vector3(GameStateManager.Window.Width / 2, 
                 GameStateManager.Window.Height / 2, 0);
+        playerEntity.AddComponent(new Animation());
+        playerEntity.GetComponent<Animation>().LoadTextureAtlas("Content/nyplayeridle-Sheet.png", "idle", .4f, (16, 16));
+        playerEntity.GetComponent<Animation>().LoadTextureAtlas("Content/nyplayerrun-Sheet.png", "running", .13f, (16, 16));
+        playerEntity.GetComponent<Animation>().SetState("idle");
         var circ = new Entity();
         circ.AddComponent(new RenderCircle(50));
         

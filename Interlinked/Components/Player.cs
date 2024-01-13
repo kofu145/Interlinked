@@ -10,10 +10,16 @@ public class Player : Component
 {
     private float speed;
     private Keys[] movementInputs = { Keys.W, Keys.A, Keys.S, Keys.D };
+    private Animation anim;
 
     public Player(float speed)
     {
         this.speed = speed;
+    }
+    public override void Initialize()
+    {
+        base.Initialize();
+        anim = ParentEntity.GetComponent<Animation>();
     }
 
     public override void Update(GameTime gameTime)
@@ -32,7 +38,12 @@ public class Player : Component
             direction.X = speed;
 
         if (direction != Vector3.Zero)
+        {
             direction = Vector3.Normalize(direction);
+            anim.SetState("running");
+        }
+        else
+            anim.SetState("idle");
         
         Transform.Position += direction * speed * gameTime.DeltaTime;
     }
