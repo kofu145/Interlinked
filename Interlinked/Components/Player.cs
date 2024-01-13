@@ -8,8 +8,6 @@ namespace Interlinked.Components;
 
 public class Player : Component
 {
-    private float xVelocity;
-    private float yVelocity;
     private float speed;
     private Keys[] movementInputs = { Keys.W, Keys.A, Keys.S, Keys.D };
 
@@ -21,19 +19,21 @@ public class Player : Component
     public override void Update(GameTime gameTime)
     {
         base.Update(gameTime);
-        xVelocity = 0f;
-        yVelocity = 0f;
+        
+        Vector3 direction = Vector3.Zero;
         
         if (InputManager.GetKeyPressed(movementInputs[0])) //if W is pressed, move up
-            yVelocity = -speed;
+            direction.Y = -speed;
         if (InputManager.GetKeyPressed(movementInputs[2])) //if S is pressed, move down
-            yVelocity = speed;
+            direction.Y = speed;
         if (InputManager.GetKeyPressed(movementInputs[1])) //if A is pressed, move left
-            xVelocity = -speed;
+            direction.X = -speed;
         if (InputManager.GetKeyPressed(movementInputs[3])) //if D is pressed, move right
-            xVelocity = speed;
+            direction.X = speed;
 
-        Transform.Position.Y += yVelocity * gameTime.DeltaTime;
-        Transform.Position.X += xVelocity * gameTime.DeltaTime;
+        if (direction != Vector3.Zero)
+            direction = Vector3.Normalize(direction);
+        
+        Transform.Position += direction * speed * gameTime.DeltaTime;
     }
 }
