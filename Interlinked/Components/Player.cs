@@ -11,6 +11,7 @@ public class Player : Component
     private float speed;
     private Keys[] movementInputs = { Keys.W, Keys.A, Keys.S, Keys.D };
     private Animation anim;
+    public const float PlayerSize = 3f;
 
     public Player(float speed)
     {
@@ -19,6 +20,7 @@ public class Player : Component
     public override void Initialize()
     {
         base.Initialize();
+        ParentEntity.Transform.Scale = new Vector2(PlayerSize, PlayerSize);
         anim = ParentEntity.GetComponent<Animation>();
     }
 
@@ -43,8 +45,15 @@ public class Player : Component
             anim.SetState("running");
         }
         else
+        {
             anim.SetState("idle");
+        }
         
+        if (direction.X < 0)
+            ParentEntity.Transform.Scale = new Vector2(-PlayerSize, PlayerSize);
+        else if (direction.X > 0)
+            ParentEntity.Transform.Scale = new Vector2(PlayerSize, PlayerSize);
+
         Transform.Position += direction * speed * gameTime.DeltaTime;
     }
 }
