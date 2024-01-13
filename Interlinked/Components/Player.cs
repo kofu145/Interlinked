@@ -48,11 +48,11 @@ public class Player : Component
         {
             anim.SetState("idle");
         }
-        
+
         if (direction.X < 0)
-            ParentEntity.Transform.Scale = new Vector2(-PlayerSize, PlayerSize);
+            ParentEntity.Transform.Rotation.Z = 180;
         else if (direction.X > 0)
-            ParentEntity.Transform.Scale = new Vector2(PlayerSize, PlayerSize);
+            ParentEntity.Transform.Rotation.Z = 0;
 
         Transform.Position += direction * speed * gameTime.DeltaTime;
     }
