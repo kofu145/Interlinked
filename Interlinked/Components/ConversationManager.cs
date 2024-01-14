@@ -5,6 +5,7 @@ using GramEngine.Core;
 using GramEngine.ECS;
 using GramEngine.ECS.Components;
 using GramEngine.ECS.Components.UI;
+using Interlinked.Components;
 
 namespace DialogueTesting.Components;
 
@@ -18,29 +19,40 @@ public class ConversationManager : Component
     private DialogueManager dialogueManager;
     private string[] options;
     private List<string> mainFile;
-    private bool talkedFlag;
+    public bool talkedFlag;
+    private float timer;
+    private bool useFinish;
+    private Entity player;
+    private string name;
 
-    public ConversationManager(string conversationPath, string finishedPath)
+    public ConversationManager(string conversationPath, string finishedPath, string name)
     {
         this.finishedPath = finishedPath;
         convName = conversationPath.Split(".")[0];
         conversing = false;
         talkedFlag = false;
+        useFinish = false;
         options = new string[2];
         mainFile = new List<string>();
+        timer = 0;
+        this.name = name;
 
+    }
+
+    public override void Initialize()
+    {
+        player = ParentScene.FindWithTag("player");
     }
 
     public void StartDialogue()
     {
-        if (!talkedFlag)
+        if (!useFinish)
         {
             InvokeText(convName + ".txt");
         }
         else
         {
             InvokeText(finishedPath);
-            conversing = false;
         }
     }
 
@@ -65,7 +77,7 @@ public class ConversationManager : Component
             }
         }
         
-        textGenerator = new Dialogue(mainFile.ToArray());
+        textGenerator = new Dialogue(mainFile.ToArray(), ParentScene.FindWithTag("player").Transform, this.name);
         boxEntity = textGenerator.Instantiate();
         dialogueManager = boxEntity.GetComponent<DialogueManager>();
         ParentScene.AddEntity(boxEntity);
@@ -73,12 +85,15 @@ public class ConversationManager : Component
 
     }
 
-    private void CreateDecisions()
+    private void CreateDecisions(GameTime gameTime)
     {
         if (options[0] == "none")
         {
             talkedFlag = true;
+            useFinish = true;
+            timer = (float)gameTime.TotalTime.TotalSeconds + .5f;
             ParentScene.DestroyEntity(boxEntity);
+            player.GetComponent<Player>().Talking = false;
             return;
         }
 
@@ -89,11 +104,11 @@ public class ConversationManager : Component
             var button = new Entity();
             button.AddComponent(new Button(1000, 70));
             var buttComp = button.GetComponent<Button>();
-
+            var playerPos = ParentScene.FindWithTag("player").Transform.Position;
             button.Transform.Position = new Vector3(
-                (float)GameStateManager.Window.settings.Width / 2 - buttComp.Width / 2,
-                GameStateManager.Window.settings.Height * .17f * (i + 1),
-                0f);
+                (float)playerPos.X - buttComp.Width / 2,
+                (playerPos.Y - (float)GameStateManager.Window.settings.Height / 4) * (i + 1) + 100,
+                100f);
             button.AddComponent(new RenderRect(new Vector2(1000, 70)));
             var rect = button.GetComponent<RenderRect>();
             rect.FillColor = Color.FromArgb(89, 82, 70);
@@ -129,9 +144,15 @@ public class ConversationManager : Component
         {
             if (dialogueManager.Finished)
             {
-                CreateDecisions();
+                CreateDecisions(gameTime);
                 conversing = false;
             }
+        }
+
+        if (talkedFlag && !ParentScene.FindWithTag("player").GetComponent<Player>().Talking &&
+            gameTime.TotalTime.TotalSeconds > timer)
+        {
+            talkedFlag = false;
         }
         
     }

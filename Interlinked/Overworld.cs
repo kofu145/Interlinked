@@ -26,6 +26,7 @@ public class Overworld : GameState
         GameStateManager.Window.Zoom = 200f;
         
         playerEntity = new Entity();
+        playerEntity.Tag = "player";
         playerEntity.AddComponent(new Sprite("Content/nyplayer.png"));
         playerEntity.AddComponent(new Player(300f));
         playerEntity.Transform.Position =
@@ -35,57 +36,56 @@ public class Overworld : GameState
         playerEntity.GetComponent<Animation>().LoadTextureAtlas("Content/nyplayeridle-Sheet.png", "idle", .4f, (16, 16));
         playerEntity.GetComponent<Animation>().LoadTextureAtlas("Content/nyplayerrun-Sheet.png", "running", .13f, (16, 16));
         playerEntity.GetComponent<Animation>().SetState("idle");
-        playerEntity.AddComponent(new CircleCollider(30, true));
+        playerEntity.AddComponent(new CircleCollider(30, false, true));
 
-        playerEntity.GetComponent<CircleCollider>().OnCollision += with =>
+        playerEntity.GetComponent<CircleCollider>().OnCollision += (CircleCollider other) =>
         {
-            
-        };
+            if (other.ParentEntity.Tag == "NPC" && !playerEntity.GetComponent<Player>().Talking
+                && !other.ParentEntity.GetComponent<ConversationManager>().talkedFlag)
+            {
+                if (InputManager.GetKeyPressed(Keys.Enter))
+                {
+                    playerEntity.GetComponent<Player>().Talking = true;
+                    other.ParentEntity.GetComponent<ConversationManager>().StartDialogue();
 
+                }
+            }
+        };
+        
         thalrogg = new Entity();
         thalrogg.AddComponent(new Sprite("Content/nyplayer.png"));
-        thalrogg.AddComponent(new CircleCollider(80, false, false));
+        thalrogg.AddComponent(new CircleCollider(80, false));
         thalrogg.Transform.Scale = new Vector2(npcSize, npcSize);
         thalrogg.AddComponent(new Animation());
         thalrogg.GetComponent<Animation>().LoadTextureAtlas("Content/thalrogg-Sheet.png", "idle", .4f, (16, 16));
         thalrogg.GetComponent<Animation>().SetState("idle");
-        thalrogg.AddComponent(new ConversationManager("Content/Dialogue/test.txt", "Content/Dialogue/finished.txt"));
+        thalrogg.AddComponent(new ConversationManager("Content/Dialogue/test.txt", "Content/Dialogue/finished.txt", "thalrogg"));
         thalrogg.Tag = "NPC";
 
 
         celia = new Entity();
         celia.AddComponent(new Sprite("Content/nyplayer.png"));
-        celia.AddComponent(new CircleCollider(80, false, false));
+        celia.AddComponent(new CircleCollider(80, false));
         celia.Transform.Scale = new Vector2(npcSize, npcSize);
-        celia.Transform.Position.X = 150;
+        celia.Transform.Position.X = 500;
         celia.AddComponent(new Animation());
         celia.GetComponent<Animation>().LoadTextureAtlas("Content/celianohat-Sheet.png", "idle", .4f, (16,16));
         celia.GetComponent<Animation>().SetState("idle");
-        celia.AddComponent(new ConversationManager("Content/Dialogue/test.txt", "Content/Dialogue/finished.txt"));
+        celia.AddComponent(new ConversationManager("Content/Dialogue/test.txt", "Content/Dialogue/finished.txt", "Celia"));
         celia.Tag = "NPC";
 
         bethard = new Entity();
         bethard.AddComponent(new Sprite("Content/nyplayer.png"));
-        bethard.AddComponent(new CircleCollider(80, false, false));
+        bethard.AddComponent(new CircleCollider(80, false));
         bethard.Transform.Scale = new Vector2(npcSize, npcSize);
         bethard.Transform.Position.X = 300;
         bethard.AddComponent(new Animation());
         bethard.GetComponent<Animation>().LoadTextureAtlas("Content/bethard-Sheet.png", "idle", .4f, (16, 16));
         bethard.GetComponent<Animation>().SetState("idle");
-        bethard.AddComponent(new ConversationManager("Content/Dialogue/test.txt", "Content/Dialogue/finished.txt"));
+        bethard.AddComponent(new ConversationManager("Content/Dialogue/test.txt", "Content/Dialogue/finished.txt", "Bethard"));
         bethard.Tag = "NPC";
         
-        playerEntity.GetComponent<CircleCollider>().OnCollision += (CircleCollider other) =>
-        {
-            
-            if (other.ParentEntity.Tag == "NPC")
-            {
-                if (InputManager.GetKeyPressed(Keys.Enter))
-                {
-                    other.ParentEntity.GetComponent<ConversationManager>().StartDialogue();
-                }
-            }
-        };
+        
         
         owbg = new Entity();
         owbg.AddComponent(new Sprite("Content/testow.png"));

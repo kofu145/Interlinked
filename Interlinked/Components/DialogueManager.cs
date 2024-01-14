@@ -21,13 +21,14 @@ public class DialogueManager : Component
     private int cutoff;
     private Keys advanceTextKey = Keys.Enter;
     private Sound sound;
+    private string name;
     
     /// <summary>
     /// A dialogue managing class that renders RPG-like textboxes. Requires a TextComponent.
     /// </summary>
     /// <param name="dialogue">The dialogue to be rendered</param>
     /// <param name="toAdvanceTime">The time spent in between rendering each individual character</param>
-    public DialogueManager(string[] dialogue, double toAdvanceTime, int cutoff)
+    public DialogueManager(string[] dialogue, double toAdvanceTime, int cutoff, string name)
     {
         this.dialogue = dialogue;
         currText = 0;
@@ -36,6 +37,7 @@ public class DialogueManager : Component
         Rendering = true;
         Finished = false;
         this.cutoff = cutoff;
+        this.name = name;
     }
     public override void Initialize()
     {
@@ -57,7 +59,7 @@ public class DialogueManager : Component
                 Rendering = false;
             if (currChar % 3 == 0)
                 sound.Play("scroll");
-            textComponent.Text = "NAME" + Environment.NewLine + toRender.Substring(0, currChar);
+            textComponent.Text = $"{name}" + Environment.NewLine + toRender.Substring(0, currChar);
         }
         else if (!Rendering)
         {

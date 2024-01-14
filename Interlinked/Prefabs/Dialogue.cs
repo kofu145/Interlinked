@@ -12,10 +12,14 @@ public class Dialogue : Prefab
     private Entity dialogueEntity;
     private string[] dialogue;
     private string text;
+    private Vector3 playerPos;
+    private string name;
 
-    public Dialogue(string[] dialogue)
+    public Dialogue(string[] dialogue, Transform playerTrans, string name)
     {
         this.dialogue = dialogue;
+        this.name = name;
+        playerPos = playerTrans.Position;
     }
     
     public override Entity Instantiate()
@@ -43,12 +47,13 @@ public class Dialogue : Prefab
         rect.OutlineColor = Color.FromArgb(25, 31, 34);
         dialogueEntity.Transform.Position =
             new Vector3(
-                (float)GameStateManager.Window.settings.Width / 2 - rect.Size.X / 2,
-                (float)GameStateManager.Window.settings.Height - rect.Size.Y * 1.2f,
-                0f); 
+                (float)playerPos.X - rect.Size.X / 2,
+                playerPos.Y + rect.Size.Y / 2,
+                100f); 
+        
         textComponent.TextOffset = new Vector2(rect.Size.X*.03f, rect.Size.Y*.1f);
         dialogueEntity.AddComponent(new DialogueManager(dialogue, .02, 
-            50));
+            50, name));
 
         return dialogueEntity;
     }

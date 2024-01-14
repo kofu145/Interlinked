@@ -12,6 +12,7 @@ public class Player : Component
     private Keys[] movementInputs = { Keys.W, Keys.A, Keys.S, Keys.D };
     private Animation anim;
     public const float PlayerSize = 5f;
+    public bool Talking;
 
     public Player(float speed)
     {
@@ -39,21 +40,25 @@ public class Player : Component
         if (InputManager.GetKeyPressed(movementInputs[3])) //if D is pressed, move right
             direction.X = speed;
 
-        if (direction != Vector3.Zero)
+        if (!Talking)
         {
-            direction = Vector3.Normalize(direction);
-            anim.SetState("running");
-        }
-        else
-        {
-            anim.SetState("idle");
-        }
+            if (direction != Vector3.Zero)
+            {
+                direction = Vector3.Normalize(direction);
+                anim.SetState("running");
+            }
+            else
+            {
+                anim.SetState("idle");
+            }
 
-        if (direction.X < 0)
-            ParentEntity.Transform.Scale.X = -PlayerSize;
-        else if (direction.X > 0)
-            ParentEntity.Transform.Scale.X = PlayerSize;
-
-        Transform.Position += direction * speed * gameTime.DeltaTime;
+            if (direction.X < 0)
+                ParentEntity.Transform.Scale.X = -PlayerSize;
+            else if (direction.X > 0)
+                ParentEntity.Transform.Scale.X = PlayerSize;
+        
+            Transform.Position += direction * speed * gameTime.DeltaTime;
+        }
+        
     }
 }
