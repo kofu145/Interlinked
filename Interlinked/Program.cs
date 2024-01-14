@@ -8,9 +8,9 @@ WindowSettings windowSettings = new WindowSettings()
     Width = 1280,
     Height = 760,
     ShowColliders = true,
-    ShowFPS = true
+    ShowFPS = false
 };
 
-Window window = new Window(new Overworld(), windowSettings);
+Window window = new Window(new TitleScreen(), windowSettings);
 
 window.Run();
