@@ -11,6 +11,10 @@ using GramEngine.Core;
 public class Overworld : GameState
 {
     private Entity playerEntity;
+    private Entity thalrogg;
+    private Entity celia;
+    private Entity bethard;
+    public const float npcSize = 5f;
     private Entity owbg;
     public override void Initialize()
     {
@@ -28,6 +32,27 @@ public class Overworld : GameState
         playerEntity.GetComponent<Animation>().LoadTextureAtlas("Content/nyplayeridle-Sheet.png", "idle", .4f, (16, 16));
         playerEntity.GetComponent<Animation>().LoadTextureAtlas("Content/nyplayerrun-Sheet.png", "running", .13f, (16, 16));
         playerEntity.GetComponent<Animation>().SetState("idle");
+        playerEntity.AddComponent(new CircleCollider(30, true));
+
+        thalrogg = new Entity();
+        thalrogg.AddComponent(new Sprite("Content/thalrogg-Sheet.png"));
+        thalrogg.AddComponent(new CircleCollider(50, false, false));
+        thalrogg.Transform.Scale = new Vector2(npcSize, npcSize);
+        thalrogg.AddComponent(new Animation());
+        thalrogg.GetComponent<Animation>().LoadTextureAtlas("Content/thalrogg-Sheet.png", "idle", .4f, (16, 16));
+        thalrogg.GetComponent<Animation>().SetState("idle");
+
+
+        celia = new Entity();
+        celia.AddComponent(new Sprite("Content/celianohat-Sheet.png"));
+        celia.AddComponent(new CircleCollider(50, false, false));
+        celia.Transform.Scale = new Vector2(npcSize, npcSize);
+
+        bethard = new Entity();
+        bethard.AddComponent(new Sprite("Content/bethard-Sheet.png"));
+        bethard.AddComponent(new CircleCollider(50, false, false));
+        
+        
         
         owbg = new Entity();
         owbg.AddComponent(new Sprite("Content/testow.png"));
@@ -36,6 +61,8 @@ public class Overworld : GameState
                 GameStateManager.Window.Height / 2, -1);
 
         AddEntity(playerEntity);
+        AddEntity(thalrogg);
+        AddEntity(celia);
         AddEntity(owbg);
     }
 
