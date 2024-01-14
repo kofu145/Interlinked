@@ -28,7 +28,7 @@ public class Overworld : GameState
         playerEntity = new Entity();
         playerEntity.Tag = "player";
         playerEntity.AddComponent(new Sprite("Content/nyplayer.png"));
-        playerEntity.AddComponent(new Player(300f));
+        playerEntity.AddComponent(new Player(2000f));
         playerEntity.Transform.Position =
             new Vector3(GameStateManager.Window.Width / 2, 
                 GameStateManager.Window.Height / 2, 0);
@@ -107,7 +107,7 @@ public class Overworld : GameState
             playerEntity.Transform.Position.X - GameStateManager.Window.settings.Width / 2,
             playerEntity.Transform.Position.Y - GameStateManager.Window.settings.Height / 2);
         GameStateManager.Window.CameraPosition = CameraPos;
-
+        Console.WriteLine(playerEntity.Transform.Position);
         
     }
     
