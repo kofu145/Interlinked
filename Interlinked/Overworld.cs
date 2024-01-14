@@ -1,6 +1,8 @@
 ﻿using System.Data;
 using System.Drawing;
 using System.Numerics;
+using DialogueTesting.Components;
+using GramEngine.Core.Input;
 using GramEngine.ECS;
 using GramEngine.ECS.Components;
 using Interlinked.Components;
@@ -35,6 +37,11 @@ public class Overworld : GameState
         playerEntity.GetComponent<Animation>().SetState("idle");
         playerEntity.AddComponent(new CircleCollider(30, true));
 
+        playerEntity.GetComponent<CircleCollider>().OnCollision += with =>
+        {
+            
+        };
+
         thalrogg = new Entity();
         thalrogg.AddComponent(new Sprite("Content/nyplayer.png"));
         thalrogg.AddComponent(new CircleCollider(80, false, false));
@@ -42,6 +49,8 @@ public class Overworld : GameState
         thalrogg.AddComponent(new Animation());
         thalrogg.GetComponent<Animation>().LoadTextureAtlas("Content/thalrogg-Sheet.png", "idle", .4f, (16, 16));
         thalrogg.GetComponent<Animation>().SetState("idle");
+        thalrogg.AddComponent(new ConversationManager("Content/Dialogue/test.txt", "Content/Dialogue/finished.txt"));
+        thalrogg.Tag = "NPC";
 
 
         celia = new Entity();
@@ -52,6 +61,8 @@ public class Overworld : GameState
         celia.AddComponent(new Animation());
         celia.GetComponent<Animation>().LoadTextureAtlas("Content/celianohat-Sheet.png", "idle", .4f, (16,16));
         celia.GetComponent<Animation>().SetState("idle");
+        celia.AddComponent(new ConversationManager("Content/Dialogue/test.txt", "Content/Dialogue/finished.txt"));
+        celia.Tag = "NPC";
 
         bethard = new Entity();
         bethard.AddComponent(new Sprite("Content/nyplayer.png"));
@@ -61,8 +72,20 @@ public class Overworld : GameState
         bethard.AddComponent(new Animation());
         bethard.GetComponent<Animation>().LoadTextureAtlas("Content/bethard-Sheet.png", "idle", .4f, (16, 16));
         bethard.GetComponent<Animation>().SetState("idle");
+        bethard.AddComponent(new ConversationManager("Content/Dialogue/test.txt", "Content/Dialogue/finished.txt"));
+        bethard.Tag = "NPC";
         
-        
+        playerEntity.GetComponent<CircleCollider>().OnCollision += (CircleCollider other) =>
+        {
+            
+            if (other.ParentEntity.Tag == "NPC")
+            {
+                if (InputManager.GetKeyPressed(Keys.Enter))
+                {
+                    other.ParentEntity.GetComponent<ConversationManager>().StartDialogue();
+                }
+            }
+        };
         
         owbg = new Entity();
         owbg.AddComponent(new Sprite("Content/testow.png"));
@@ -87,6 +110,7 @@ public class Overworld : GameState
 
         
     }
+    
     
     
 
