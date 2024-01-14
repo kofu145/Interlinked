@@ -56,6 +56,7 @@ public class Overworld : GameState
         thalrogg.AddComponent(new Sprite("Content/nyplayer.png"));
         thalrogg.AddComponent(new CircleCollider(80, false));
         thalrogg.Transform.Scale = new Vector2(npcSize, npcSize);
+        thalrogg.Transform.Position = new Vector3(-1580, 2110, 0);
         thalrogg.AddComponent(new Animation());
         thalrogg.GetComponent<Animation>().LoadTextureAtlas("Content/thalrogg-Sheet.png", "idle", .4f, (16, 16));
         thalrogg.GetComponent<Animation>().SetState("idle");
@@ -67,7 +68,7 @@ public class Overworld : GameState
         celia.AddComponent(new Sprite("Content/nyplayer.png"));
         celia.AddComponent(new CircleCollider(80, false));
         celia.Transform.Scale = new Vector2(npcSize, npcSize);
-        celia.Transform.Position.X = 500;
+        celia.Transform.Position = new Vector3(2740, 2024,1);
         celia.AddComponent(new Animation());
         celia.GetComponent<Animation>().LoadTextureAtlas("Content/celianohat-Sheet.png", "idle", .4f, (16,16));
         celia.GetComponent<Animation>().SetState("idle");
@@ -78,7 +79,7 @@ public class Overworld : GameState
         bethard.AddComponent(new Sprite("Content/nyplayer.png"));
         bethard.AddComponent(new CircleCollider(80, false));
         bethard.Transform.Scale = new Vector2(npcSize, npcSize);
-        bethard.Transform.Position.X = 300;
+        bethard.Transform.Position = new Vector3(3391, 219, 0);
         bethard.AddComponent(new Animation());
         bethard.GetComponent<Animation>().LoadTextureAtlas("Content/bethard-Sheet.png", "idle", .4f, (16, 16));
         bethard.GetComponent<Animation>().SetState("idle");
