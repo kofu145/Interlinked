@@ -1,0 +1,4 @@
+﻿option:The town is back on that path to the east
+option:What brought you out here in the first place?
+Um......
+......I am.

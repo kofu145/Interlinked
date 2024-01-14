@@ -1,0 +1,4 @@
+﻿option:If you're worried, how were you gonna fight him alone?
+option:I could always use more hands to help!
+......can I?
+I'm only an apprentice mage...

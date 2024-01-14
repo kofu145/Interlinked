@@ -1,0 +1,3 @@
+﻿option:*Hand him medicine*
+option:Are you okay?
+*cough cough* ACK *cough* mmmckcfmf *ahem*

@@ -1,0 +1,4 @@
+﻿option:If you’re as strong as you seem, wanna help me out?
+option:You sure? Most orcs seem pretty powerful.
+Right. Don’t like fighting but us orcs aren’t as strong as everyone thinks.
+Just a few of us can stand up to the demon king’s onslaught, so I gotta help.

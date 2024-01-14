@@ -1,0 +1,4 @@
+﻿option:Why not use some herbs on yourself if you found them?
+option:Um alright then (This old guy seems a bit kooky)
+Deep into the forest there are some great medicinal herbs that I need for my work as a priest.
+It’s dangerous territory I know, but I’m not much of a gardener so I need to come out here to harvest them.

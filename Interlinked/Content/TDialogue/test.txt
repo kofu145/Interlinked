@@ -1,0 +1,3 @@
+﻿option:Heya! What brings you here?
+option:*Prepare for battle*
+RAAAGH

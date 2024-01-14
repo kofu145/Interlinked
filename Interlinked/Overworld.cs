@@ -59,7 +59,7 @@ public class Overworld : GameState
         thalrogg.AddComponent(new Animation());
         thalrogg.GetComponent<Animation>().LoadTextureAtlas("Content/thalrogg-Sheet.png", "idle", .4f, (16, 16));
         thalrogg.GetComponent<Animation>().SetState("idle");
-        thalrogg.AddComponent(new ConversationManager("Content/Dialogue/test.txt", "Content/Dialogue/finished.txt", "thalrogg"));
+        thalrogg.AddComponent(new ConversationManager("Content/TDialogue/test.txt", "Content/TDialogue/finished.txt", "thalrogg"));
         thalrogg.Tag = "NPC";
 
 
@@ -71,7 +71,7 @@ public class Overworld : GameState
         celia.AddComponent(new Animation());
         celia.GetComponent<Animation>().LoadTextureAtlas("Content/celianohat-Sheet.png", "idle", .4f, (16,16));
         celia.GetComponent<Animation>().SetState("idle");
-        celia.AddComponent(new ConversationManager("Content/Dialogue/test.txt", "Content/Dialogue/finished.txt", "Celia"));
+        celia.AddComponent(new ConversationManager("Content/CDialogue/test.txt", "Content/CDialogue/finished.txt", "Celia"));
         celia.Tag = "NPC";
 
         bethard = new Entity();
@@ -82,7 +82,7 @@ public class Overworld : GameState
         bethard.AddComponent(new Animation());
         bethard.GetComponent<Animation>().LoadTextureAtlas("Content/bethard-Sheet.png", "idle", .4f, (16, 16));
         bethard.GetComponent<Animation>().SetState("idle");
-        bethard.AddComponent(new ConversationManager("Content/Dialogue/test.txt", "Content/Dialogue/finished.txt", "Bethard"));
+        bethard.AddComponent(new ConversationManager("Content/BDialogue/test.txt", "Content/BDialogue/finished.txt", "Bethard"));
         bethard.Tag = "NPC";
         
         

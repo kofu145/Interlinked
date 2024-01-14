@@ -1,0 +1,4 @@
+﻿option:Protect your village?
+option:I'll try to put a stop to that, don't fret
+That no good demon king? He keeps sending his soldiers to town -
+makes a lot more work for us warriors to protect our village.

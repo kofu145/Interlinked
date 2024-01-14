@@ -1,0 +1,4 @@
+﻿option:So what brings a young girl like you out here?
+option:Are you lost?
+!
+...thanks...
