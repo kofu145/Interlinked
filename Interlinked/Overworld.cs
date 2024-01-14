@@ -28,31 +28,13 @@ public class Overworld : GameState
         playerEntity.GetComponent<Animation>().LoadTextureAtlas("Content/nyplayeridle-Sheet.png", "idle", .4f, (16, 16));
         playerEntity.GetComponent<Animation>().LoadTextureAtlas("Content/nyplayerrun-Sheet.png", "running", .13f, (16, 16));
         playerEntity.GetComponent<Animation>().SetState("idle");
-        playerEntity.AddComponent(new CircleCollider(30, true));
-
+        
         owbg = new Entity();
         owbg.AddComponent(new Sprite("Content/testow.png"));
-        owbg.Transform.Scale = new Vector2(10, 10);
+        owbg.Transform.Scale = new Vector2(8, 8);
         owbg.Transform.Position = new Vector3(GameStateManager.Window.Width / 2, 
                 GameStateManager.Window.Height / 2, -1);
-        
-        var circ = new Entity();
-        circ.AddComponent(new CircleCollider(50, true));
-        var circ2 = new Entity();
-        circ2.AddComponent(new CircleCollider(50, false, false));
-        circ2.Transform.Position = new Vector3(30, 30, 0);
 
-        for (int i = 0; i < 200; i++)
-        {
-            var col = new Entity();
-            col.AddComponent(new CircleCollider(50, false));
-            var rand = new Random();
-            col.Transform.Position = new Vector3(rand.Next(500), rand.Next(500), 0);
-            AddEntity(col);
-        }
-        
-        AddEntity(circ); 
-        AddEntity(circ2);
         AddEntity(playerEntity);
         AddEntity(owbg);
     }
@@ -66,6 +48,6 @@ public class Overworld : GameState
         GameStateManager.Window.CameraPosition = CameraPos;
 
         
-        
     }
+
 }
