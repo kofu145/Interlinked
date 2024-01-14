@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System.Data;
+using System.Drawing;
 using System.Numerics;
 using GramEngine.ECS;
 using GramEngine.ECS.Components;
@@ -35,8 +36,8 @@ public class Overworld : GameState
         playerEntity.AddComponent(new CircleCollider(30, true));
 
         thalrogg = new Entity();
-        thalrogg.AddComponent(new Sprite("Content/thalrogg-Sheet.png"));
-        thalrogg.AddComponent(new CircleCollider(50, false, false));
+        thalrogg.AddComponent(new Sprite("Content/nyplayer.png"));
+        thalrogg.AddComponent(new CircleCollider(80, false, false));
         thalrogg.Transform.Scale = new Vector2(npcSize, npcSize);
         thalrogg.AddComponent(new Animation());
         thalrogg.GetComponent<Animation>().LoadTextureAtlas("Content/thalrogg-Sheet.png", "idle", .4f, (16, 16));
@@ -44,13 +45,22 @@ public class Overworld : GameState
 
 
         celia = new Entity();
-        celia.AddComponent(new Sprite("Content/celianohat-Sheet.png"));
-        celia.AddComponent(new CircleCollider(50, false, false));
+        celia.AddComponent(new Sprite("Content/nyplayer.png"));
+        celia.AddComponent(new CircleCollider(80, false, false));
         celia.Transform.Scale = new Vector2(npcSize, npcSize);
+        celia.Transform.Position.X = 150;
+        celia.AddComponent(new Animation());
+        celia.GetComponent<Animation>().LoadTextureAtlas("Content/celianohat-Sheet.png", "idle", .4f, (16,16));
+        celia.GetComponent<Animation>().SetState("idle");
 
         bethard = new Entity();
-        bethard.AddComponent(new Sprite("Content/bethard-Sheet.png"));
-        bethard.AddComponent(new CircleCollider(50, false, false));
+        bethard.AddComponent(new Sprite("Content/nyplayer.png"));
+        bethard.AddComponent(new CircleCollider(80, false, false));
+        bethard.Transform.Scale = new Vector2(npcSize, npcSize);
+        bethard.Transform.Position.X = 300;
+        bethard.AddComponent(new Animation());
+        bethard.GetComponent<Animation>().LoadTextureAtlas("Content/bethard-Sheet.png", "idle", .4f, (16, 16));
+        bethard.GetComponent<Animation>().SetState("idle");
         
         
         
@@ -63,6 +73,7 @@ public class Overworld : GameState
         AddEntity(playerEntity);
         AddEntity(thalrogg);
         AddEntity(celia);
+        AddEntity(bethard);
         AddEntity(owbg);
     }
 
@@ -76,5 +87,7 @@ public class Overworld : GameState
 
         
     }
+    
+    
 
 }
