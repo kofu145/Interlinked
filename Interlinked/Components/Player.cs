@@ -58,6 +58,14 @@ public class Player : Component
                 ParentEntity.Transform.Scale.X = PlayerSize;
         
             Transform.Position += direction * speed * gameTime.DeltaTime;
+            if (Transform.Position.X < -2230 || Transform.Position.X > 3500)
+            {
+                Transform.Position.X = Math.Clamp(Transform.Position.X, -2230, 3500);
+            }
+            if (Transform.Position.Y < -2480 || Transform.Position.Y > 3250)
+            {
+                Transform.Position.Y = Math.Clamp(Transform.Position.Y, -2480, 3250);
+            }
         }
         
     }

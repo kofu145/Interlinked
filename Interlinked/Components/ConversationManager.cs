@@ -107,7 +107,7 @@ public class ConversationManager : Component
             var playerPos = ParentScene.FindWithTag("player").Transform.Position;
             button.Transform.Position = new Vector3(
                 (float)playerPos.X - buttComp.Width / 2,
-                (playerPos.Y - (float)GameStateManager.Window.settings.Height / 4) * (i + 1) + 100,
+                (playerPos.Y - i * 100),
                 100f);
             button.AddComponent(new RenderRect(new Vector2(1000, 70)));
             var rect = button.GetComponent<RenderRect>();

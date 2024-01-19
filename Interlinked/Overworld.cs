@@ -30,13 +30,13 @@ public class Overworld : GameState
         playerEntity.AddComponent(new Sprite("Content/nyplayer.png"));
         playerEntity.AddComponent(new Player(2000f));
         playerEntity.Transform.Position =
-            new Vector3(GameStateManager.Window.Width / 2, 
-                GameStateManager.Window.Height / 2, 0);
+            new Vector3(3000, 
+                3000, 5);
         playerEntity.AddComponent(new Animation());
         playerEntity.GetComponent<Animation>().LoadTextureAtlas("Content/nyplayeridle-Sheet.png", "idle", .4f, (16, 16));
         playerEntity.GetComponent<Animation>().LoadTextureAtlas("Content/nyplayerrun-Sheet.png", "running", .13f, (16, 16));
         playerEntity.GetComponent<Animation>().SetState("idle");
-        playerEntity.AddComponent(new CircleCollider(30, false, true));
+        playerEntity.AddComponent(new CircleCollider(30, true, true));
 
         playerEntity.GetComponent<CircleCollider>().OnCollision += (CircleCollider other) =>
         {
@@ -54,7 +54,7 @@ public class Overworld : GameState
         
         thalrogg = new Entity();
         thalrogg.AddComponent(new Sprite("Content/nyplayer.png"));
-        thalrogg.AddComponent(new CircleCollider(80, false));
+        thalrogg.AddComponent(new CircleCollider(80, true));
         thalrogg.Transform.Scale = new Vector2(npcSize, npcSize);
         thalrogg.Transform.Position = new Vector3(-1580, 2110, 0);
         thalrogg.AddComponent(new Animation());
@@ -63,10 +63,9 @@ public class Overworld : GameState
         thalrogg.AddComponent(new ConversationManager("Content/TDialogue/test.txt", "Content/TDialogue/finished.txt", "thalrogg"));
         thalrogg.Tag = "NPC";
 
-
         celia = new Entity();
         celia.AddComponent(new Sprite("Content/nyplayer.png"));
-        celia.AddComponent(new CircleCollider(80, false));
+        celia.AddComponent(new CircleCollider(80, true));
         celia.Transform.Scale = new Vector2(npcSize, npcSize);
         celia.Transform.Position = new Vector3(2740, 2024,1);
         celia.AddComponent(new Animation());
@@ -77,7 +76,7 @@ public class Overworld : GameState
 
         bethard = new Entity();
         bethard.AddComponent(new Sprite("Content/nyplayer.png"));
-        bethard.AddComponent(new CircleCollider(80, false));
+        bethard.AddComponent(new CircleCollider(80, true));
         bethard.Transform.Scale = new Vector2(npcSize, npcSize);
         bethard.Transform.Position = new Vector3(3391, 219, 0);
         bethard.AddComponent(new Animation());
@@ -86,13 +85,70 @@ public class Overworld : GameState
         bethard.AddComponent(new ConversationManager("Content/BDialogue/test.txt", "Content/BDialogue/finished.txt", "Bethard"));
         bethard.Tag = "NPC";
         
-        
-        
         owbg = new Entity();
         owbg.AddComponent(new Sprite("Content/testow.png"));
         owbg.Transform.Scale = new Vector2(8, 8);
         owbg.Transform.Position = new Vector3(GameStateManager.Window.Width / 2, 
                 GameStateManager.Window.Height / 2, -1);
+        var prev = 0;
+        for (int i = 0; i < Constants.rocks.Length; i++)
+        {
+            // 
+            if (i % 2 == 0)
+            {
+                prev = Constants.rocks[i];
+            }
+            else
+            {
+                var circle = new Entity();
+                circle.AddComponent(new CircleCollider(200, false));
+                circle.Transform.Position = new Vector3(prev, Constants.rocks[i], 0);
+                AddEntity(circle);
+            }
+        }
+        for (int i = 0; i < Constants.tree.Length; i++)
+        {
+            if (i % 2 == 0)
+            {
+                prev = Constants.tree[i];
+            }
+            else
+            {
+                var circle = new Entity();
+                circle.AddComponent(new CircleCollider(200, false));
+                circle.Transform.Position = new Vector3(prev, Constants.tree[i], 0);
+                AddEntity(circle);
+            }
+        }
+        
+        for (int i = 0; i < Constants.bigtree.Length; i++)
+        {
+            if (i % 2 == 0)
+            {
+                prev = Constants.bigtree[i];
+            }
+            else
+            {
+                var circle = new Entity();
+                circle.AddComponent(new CircleCollider(500, false));
+                circle.Transform.Position = new Vector3(prev, Constants.bigtree[i], 0);
+                AddEntity(circle);
+            }
+        }
+        for (int i = 0; i < Constants.lake.Length; i++)
+        {
+            if (i % 2 == 0)
+            {
+                prev = Constants.lake[i];
+            }
+            else
+            {
+                var circle = new Entity();
+                circle.AddComponent(new CircleCollider(600, false));
+                circle.Transform.Position = new Vector3(prev, Constants.lake[i], 0);
+                AddEntity(circle);
+            }
+        }
 
         AddEntity(playerEntity);
         AddEntity(thalrogg);

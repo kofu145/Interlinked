@@ -19,6 +19,8 @@ public class TitleScreen : GameState
         title.Transform.Position = new Vector3(GameStateManager.Window.settings.Width / 2, 200, 1);
         title.Transform.Scale = new Vector2(3f, 3f);
         title.AddComponent(new Sound("Content/kf-menu.wav", "title"));
+        title.GetComponent<Sound>().Loop = true;
+        title.GetComponent<Sound>().Volume = 10;
         title.GetComponent<Sound>().Play();
         
         background = new Entity();

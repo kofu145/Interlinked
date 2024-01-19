@@ -7,7 +7,7 @@ WindowSettings windowSettings = new WindowSettings()
     WindowTitle = "Interlinked",
     Width = 1280,
     Height = 760,
-    ShowColliders = true,
+    ShowColliders = false,
     ShowFPS = false
 };
 
